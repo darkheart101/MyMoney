@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyMoney</string>
+    <string name="save">Save</string>
+    <string name="cancel">CANCEL</string>
+    <string name="title_activity_income_spends">My Money - Income / Spends</string>
+    <string name="price_after_rebate">My Money - Income / Spends</string>
+    <string name="income_value">Income Value</string>
+    <string name="income_description">Income Description</string>
+    <string name="title_activity_income">My Money - Income</string>
+    <string name="title_activity_expense">My Money - Expense</string>
+    <string name="total">Total: </string>
+</resources>
