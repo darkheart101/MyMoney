@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingTop="10dip"
-    android:paddingBottom="7dip"
+    android:paddingBottom="100dip"
     android:orientation="horizontal"
     android:gravity="left">
 

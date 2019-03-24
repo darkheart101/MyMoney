@@ -10,14 +10,16 @@ import android.widget.TextView;
 import com.software.darkheart.Interfaces.Money;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class MoneyAdapter extends ArrayAdapter<Money>{
 
+    DecimalFormat f = new DecimalFormat("##.00");
+
 
     public MoneyAdapter(Context context, List<Money> money_conjuction) {
         super(context, R.layout.money_row, money_conjuction);
-
     }
 
     //@androidx.annotation.NonNull
@@ -31,8 +33,9 @@ public class MoneyAdapter extends ArrayAdapter<Money>{
 
         if (m != null) {
 
+
             String money_description = String.valueOf(m.get_Comment());
-            String money_value = String.valueOf(m.get_Value());
+            String money_value = String.valueOf(f.format(m.get_Value()));
             String money_full_description = money_value + " - " + money_description;
 
 

@@ -21,6 +21,7 @@ import com.software.darkheart.model.Expense;
 import com.software.darkheart.model.Period;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class IncomeSpendsActivity extends AppCompatActivity {
@@ -33,6 +34,8 @@ public class IncomeSpendsActivity extends AppCompatActivity {
     float sum_income = 0;
     float sum_expense = 0;
     float total_money = 0;
+
+    DecimalFormat f = new DecimalFormat("##.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class IncomeSpendsActivity extends AppCompatActivity {
 
         total_money = sum_income - sum_expense;
         TextView txt_total_money = footerView.findViewById(R.id.txt_total_money);
-        txt_total_money.setText(String.valueOf(total_money ));
+        txt_total_money.setText("  " + String.valueOf(f.format(total_money) ));
         if(total_money < 0) txt_total_money.setTextColor(Color.RED);
         if(total_money >= 0) txt_total_money.setTextColor(Color.GREEN);
 
