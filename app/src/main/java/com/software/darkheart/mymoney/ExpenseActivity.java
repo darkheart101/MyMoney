@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.software.darkheart.DatabaseHelper;
 import com.software.darkheart.Interfaces.Money;
+import com.software.darkheart.model.Expense;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class ExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(this);
@@ -72,12 +73,29 @@ public class ExpenseActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 TextView txt_expense_value = findViewById(R.id.txt_expense_value);
+
+                // Handle empty value
+                if(
+                    txt_expense_value.getText().toString() == null
+                    ||
+                    txt_expense_value.getText().toString().length() == 0
+                ) txt_expense_value.setText("0");
                 expense_value = Float.valueOf( txt_expense_value.getText().toString() );
+
 
                 TextView txt_expense_comment = findViewById(R.id.txt_expense_comment);
                 expense_comment = txt_expense_comment.getText().toString();
 
-                db.insert_Expense_record(periodID, expense_value,expense_comment);
+                if( expenseID > 0) {
+                    Expense exp = new Expense();
+                    exp.setId(expenseID);
+                    exp.setPeriodID(periodID);
+                    exp.setValue(expense_value);
+                    exp.setComment(expense_comment);
+                    db.update_Expense_record(exp);
+                }
+                else
+                    db.insert_Expense_record(periodID, expense_value,expense_comment);
                 Intent i = new Intent(getBaseContext(), IncomeSpendsActivity.class);
                 i.putExtra("periodID", periodID);
                 startActivity(i);

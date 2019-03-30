@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.software.darkheart.DatabaseHelper;
 import com.software.darkheart.Interfaces.Money;
+import com.software.darkheart.model.Income;
 
 public class IncomeActivity extends AppCompatActivity {
 
@@ -74,12 +75,31 @@ public class IncomeActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 TextView txt_income_value = findViewById(R.id.txt_income_value);
+
+                // Handle empty value
+                if(
+                    txt_income_value.getText().toString() == null
+                    ||
+                    txt_income_value.getText().toString().length() == 0
+                )txt_income_value.setText("0");
+
+
                 income_value = Float.valueOf( txt_income_value.getText().toString() );
+
 
                 TextView txt_income_comment = findViewById(R.id.txt_income_comment);
                 income_comment = txt_income_comment.getText().toString();
-
-                db.insert_Income_record(periodID, income_value,income_comment);
+                if(incomeID > 0){
+                    Income inc = new Income();
+                    inc.setId(incomeID);
+                    inc.setPeriodID(periodID);
+                    inc.setValue(income_value);
+                    inc.setComment(income_comment);
+                    db.update_Income_record(inc);
+                }
+                else {
+                    db.insert_Income_record(periodID, income_value, income_comment);
+                }
                 Intent i = new Intent(getBaseContext(), IncomeSpendsActivity.class);
                 i.putExtra("periodID", periodID);
                 startActivity(i);

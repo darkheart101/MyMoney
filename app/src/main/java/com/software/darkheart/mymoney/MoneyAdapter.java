@@ -47,7 +47,7 @@ public class MoneyAdapter extends ArrayAdapter<Money>{
 
             if(m.getIsIncome() == false){
                 money_full_description = "-" + money_full_description;
-                moneyView.setBackgroundColor(Color.RED);
+                moneyView.setBackgroundColor(Color.YELLOW);
             }
 
             TextView txt_money_description = moneyView.findViewById(R.id.txt_money_description);

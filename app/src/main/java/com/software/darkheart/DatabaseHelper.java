@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +123,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //
+    // Update Income Record
+    //
+    public int update_Income_record(Income income){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Income.INCOME_ID, income.getId());
+        values.put(Income.INCOME_PERIOD_ID, income.getPeriodID());
+        values.put(Income.INCOME_VALUE, income.get_Value());
+        values.put(Income.INCOME_COMMENT, income.get_Comment());
+
+        // updating row
+        db.update(Income.TABLE_NAME,
+                values, Income.INCOME_ID + " = ?",
+                new String[]{String.valueOf(income.getId())});
+
+        return  income.getId();
+    }
+
+    //
     // Get All Income For Selected Period
     //
     public List<Money> get_all_income_ForPeriod(int periodID) {
@@ -215,6 +234,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return id;
     }
+
+    //
+    // Update Expense Record
+    //
+    public int update_Expense_record(Expense expense){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Expense.EXPENSE_ID, expense.getId());
+        values.put(Expense.EXPENSE_PERIOD_ID, expense.getPeriodID());
+        values.put(Expense.EXPENSE_VALUE, expense.get_Value());
+        values.put(Expense.EXPENSE_COMMENT, expense.get_Comment());
+
+        // updating row
+        db.update(Expense.TABLE_NAME,
+                values, Expense.EXPENSE_ID + " = ?",
+                new String[]{String.valueOf(expense.getId())});
+
+        return  expense.getId();
+    }
+
     //
     // Get All Expenses For Selected Period
     //
