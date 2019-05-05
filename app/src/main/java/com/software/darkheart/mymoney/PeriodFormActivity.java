@@ -1,5 +1,6 @@
 package com.software.darkheart.mymoney;
 
+import com.software.darkheart.Factories.MonthFactory;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.software.darkheart.DatabaseHelper;
+import com.software.darkheart.Factories.MonthFactory;
 
 public class PeriodFormActivity extends AppCompatActivity {
 
@@ -26,20 +28,24 @@ public class PeriodFormActivity extends AppCompatActivity {
         // Month Spinner
         Spinner spn_month = findViewById(R.id.spn_month);
         ArrayAdapter<Month> spn_month_ArrayAdapter;
+
+        Month January = MonthFactory.MonthInstance_("January");
+        Month February = MonthFactory.MonthInstance_("February");
+        Month March = MonthFactory.MonthInstance_("March");
+        Month April = MonthFactory.MonthInstance_("April");
+        Month May = MonthFactory.MonthInstance_("May");
+        Month June = MonthFactory.MonthInstance_("June");
+        Month July = MonthFactory.MonthInstance_("July");
+        Month August = MonthFactory.MonthInstance_("August");
+        Month September = MonthFactory.MonthInstance_("September");
+        Month October = MonthFactory.MonthInstance_("October");
+        Month November = MonthFactory.MonthInstance_("November");
+        Month December = MonthFactory.MonthInstance_("December");
+
         spn_month_ArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_expandable_list_item_1, new Month[] {
-                new Month( 1),
-                new Month( 2),
-                new Month( 3),
-                new Month( 4),
-                new Month( 5),
-                new Month( 6),
-                new Month( 7),
-                new Month( 8),
-                new Month( 9),
-                new Month( 10),
-                new Month( 11),
-                new Month( 12),
+                        January, February, March, April, May, June, July, August, September,
+                        October, November, December
         });
         spn_month.setAdapter(spn_month_ArrayAdapter);
 
