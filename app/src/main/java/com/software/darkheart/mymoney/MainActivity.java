@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db = new DatabaseHelper(this);
+        //db = new DatabaseHelper(this);
+        db = DatabaseHelper.getDBInstance(this);
 
         List<Period> periods = db.get_all_periods();
 

@@ -44,7 +44,8 @@ public class IncomeSpendsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        db = new DatabaseHelper(this);
+        //db = new DatabaseHelper(this);
+        db = DatabaseHelper.getDBInstance(this);
         periodID = (int)getIntent().getExtras().get("periodID");
 
         List<Money> incomes = db.get_all_income_ForPeriod(periodID);

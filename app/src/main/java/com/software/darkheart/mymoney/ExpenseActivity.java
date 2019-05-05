@@ -27,7 +27,8 @@ public class ExpenseActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        db = new DatabaseHelper(this);
+        //db = new DatabaseHelper(this);
+        db = DatabaseHelper.getDBInstance(this);
         periodID = (int)getIntent().getExtras().get("periodID");
         expenseID = (int)getIntent().getExtras().get("ExpenseID");
 

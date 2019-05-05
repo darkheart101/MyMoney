@@ -23,9 +23,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "mm_db";
 
+    private static DatabaseHelper DB_Instance = null;
 
-    public DatabaseHelper(Context context) {
+
+//    public DatabaseHelper(Context context) {
+//        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+//    }
+
+    private  DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static DatabaseHelper getDBInstance(Context context){
+        if (DB_Instance == null)
+            DB_Instance = new DatabaseHelper(context);
+
+        return DB_Instance;
     }
 
     // Creating Tables

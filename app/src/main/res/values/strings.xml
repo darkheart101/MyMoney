@@ -9,4 +9,6 @@
     <string name="title_activity_income">My Money - Income</string>
     <string name="title_activity_expense">My Money - Expense</string>
     <string name="total">Total: </string>
+    <string name="expense_value">Expense Value</string>
+    <string name="expense_description">Expense Description</string>
 </resources>
