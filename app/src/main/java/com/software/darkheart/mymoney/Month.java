@@ -8,6 +8,9 @@ public class Month {
     // A simple constructor for populating our member variables for this tutorial.
     public Month( int _id )
     {
+        if( (id > 12) && (id <= 0) )
+            throw new IllegalArgumentException("Month number out of range!");
+
         id = _id;
         name = get_month_name(_id);
     }
