@@ -21,7 +21,6 @@ public class PeriodFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_period_form);
-        //db = new DatabaseHelper(this);
         db = DatabaseHelper.getDBInstance(this);
 
         // Month Spinner

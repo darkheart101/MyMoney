@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,8 +16,6 @@ import android.widget.TextView;
 
 import com.software.darkheart.DatabaseHelper;
 import com.software.darkheart.Interfaces.Money;
-import com.software.darkheart.model.Expense;
-import com.software.darkheart.model.Period;
 
 
 import java.text.DecimalFormat;
@@ -44,7 +41,6 @@ public class IncomeSpendsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //db = new DatabaseHelper(this);
         db = DatabaseHelper.getDBInstance(this);
         periodID = (int)getIntent().getExtras().get("periodID");
 
